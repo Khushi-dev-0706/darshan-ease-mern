@@ -1,22 +1,127 @@
-exports.registerUser = (req, res) => {
+const User = require("../models/User");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
-  const { name, email, password } = req.body;
+/* ========= REGISTER ========= */
 
-  res.json({
-    message: "Register API working",
-    user: { name, email }
-  });
+exports.registerUser = async (req, res) => {
 
+  try {
+
+    const { name, email, password } = req.body;
+
+    // check existing user
+    const existingUser = await User.findOne({ email });
+
+    if (existingUser) {
+      return res.status(400).json({
+        message: "User already exists"
+      });
+    }
+
+    // hash password
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    // save user in MongoDB
+    const user = await User.create({
+      name,
+      email,
+      password: hashedPassword
+    });
+
+    res.status(201).json({
+      message: "User Registered Successfully",
+      user
+    });
+
+  } catch (error) {
+
+    console.log(error);
+
+    res.status(500).json({
+      message: "Register Error"
+    });
+
+  }
 };
 
 
-exports.loginUser = (req, res) => {
+/* ========= LOGIN ========= */
 
-  const { email, password } = req.body;
+exports.loginUser = async (req, res) => {
 
-  res.json({
-    message: "Login API working",
-    token: "dummy-jwt-token"
-  });
+  try {
+
+    const { email, password } = req.body;
+
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      return res.status(400).json({
+        message: "User not found"
+      });
+    }
+
+    const isMatch = await bcrypt.compare(
+      password,
+      user.password
+    );
+
+    if (!isMatch) {
+      return res.status(400).json({
+        message: "Invalid Password"
+      });
+    }
+
+    const token = jwt.sign(
+
+      { id: user._id },
+
+      process.env.JWT_SECRET || "secret",
+
+      { expiresIn: "1d" }
+
+    );
+
+    res.json({
+
+      message: "Login Successful",
+
+      token
+
+    });
+
+  } catch (error) {
+
+    console.log(error);
+
+    res.status(500).json({
+      message: "Login Error"
+    });
+
+  }
 
 };
+
+// exports.registerUser = (req, res) => {
+
+//   const { name, email, password } = req.body;
+
+//   res.json({
+//     message: "Register API working",
+//     user: { name, email }
+//   });
+
+// };
+
+
+// exports.loginUser = (req, res) => {
+
+//   const { email, password } = req.body;
+
+//   res.json({
+//     message: "Login API working",
+//     token: "dummy-jwt-token"
+//   });
+
+// };
