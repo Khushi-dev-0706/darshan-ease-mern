@@ -1,75 +1,89 @@
+import { useEffect, useState } from "react";
+import API from "../services/api";
 import TempleCard from "../components/TempleCard";
 
 function TempleList() {
 
-const temples = [
-{
-id: 1,
-name: "Tirupati Balaji",
-location: "Andhra Pradesh",
-image: "https://images.unsplash.com/photo-1583241800698-7a3a1d4e3b43"
-},
-{
-id: 2,
-name: "Kashi Vishwanath",
-location: "Varanasi",
-image: "https://images.unsplash.com/photo-1627894483216-2138af692e32"
-},
-{
-id: 3,
-name: "Vaishno Devi",
-location: "Jammu & Kashmir",
-image: "https://images.unsplash.com/photo-1605640840605-14ac1855827b"
-},
-{
-id: 4,
-name: "Somnath Temple",
-location: "Gujarat",
-image: "https://images.unsplash.com/photo-1599661046289-e31897846e41"
-},
-{
-id: 5,
-name: "Golden Temple",
-location: "Amritsar",
-image: "https://images.unsplash.com/photo-1595815771614-ade501d1f9eb"
-},
-{
-id: 6,
-name: "Jagannath Temple",
-location: "Puri",
-image: "https://images.unsplash.com/photo-1566554273541-37a9ca77b91c"
-}
-];
+  const [temples, setTemples] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
-return (
-<div>
+  useEffect(() => {
 
-{/* Page Header */}
-<div className="bg-light p-5 text-center">
+    const fetchTemples = async () => {
+      try {
 
-<h1>Explore Sacred Temples</h1>
+        const response = await API.get("/temples");
+        setTemples(response.data);
 
-<p className="text-muted">
-Book your darshan slots at India's most sacred temples
-</p>
+      } catch (err) {
 
-</div>
+        console.error(err);
+        setError("Failed to load temples from server");
 
-{/* Temple Grid */}
-<div className="container mt-5">
+      } finally {
 
-<div className="row">
+        setLoading(false);
 
-{temples.map((temple) => (
-<TempleCard key={temple.id} temple={temple} />
-))}
+      }
+    };
 
-</div>
+    fetchTemples();
 
-</div>
+  }, []);
 
-</div>
-);
+  if (loading) {
+    return (
+      <div className="text-center mt-5">
+        <h3>Loading temples...</h3>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="text-center mt-5 text-danger">
+        <h3>{error}</h3>
+      </div>
+    );
+  }
+
+  return (
+    <div>
+
+      {/* Page Header */}
+      <div className="bg-light p-5 text-center">
+        <h1>Explore Sacred Temples 🙏</h1>
+        <p className="text-muted">
+          Book darshan slots at India's most sacred temples
+        </p>
+      </div>
+
+      {/* Temple Grid */}
+      <div className="container mt-5">
+
+        {temples.length === 0 ? (
+          <h4 className="text-center">No temples available</h4>
+        ) : (
+
+          <div className="row">
+
+            {temples.map((temple) => (
+
+              <div className="col-md-4 mb-4" key={temple._id}>
+                <TempleCard temple={temple} />
+              </div>
+
+            ))}
+
+          </div>
+
+        )}
+
+      </div>
+
+    </div>
+  );
 }
 
 export default TempleList;

@@ -43,43 +43,41 @@ function Home() {
 
       {/* FEATURED TEMPLES */}
      <div className="container mt-5">
-
   <h2 className="text-center mb-4">Popular Temples</h2>
 
   <div className="row text-center">
 
     <div className="col-md-4 mb-4">
       <img
-        src="https://upload.wikimedia.org/wikipedia/commons/9/9b/Tirumala_Temple.jpg"
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Tirumala_Temple.jpg/640px-Tirumala_Temple.jpg"
         className="img-fluid rounded shadow"
         alt="Tirupati Temple"
-        style={{height:"250px", objectFit:"cover", width:"100%"}}
+        style={{ height: "250px", objectFit: "cover", width: "100%" }}
       />
       <h5 className="mt-2">Tirupati Balaji</h5>
     </div>
 
     <div className="col-md-4 mb-4">
       <img
-        src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Kashi_Vishwanath_Temple_Varanasi.jpg"
+        src="https://share.google/CxneRGoKqCJtrpbeG"
         className="img-fluid rounded shadow"
         alt="Kashi Vishwanath"
-        style={{height:"250px", objectFit:"cover", width:"100%"}}
+        style={{ height: "250px", objectFit: "cover", width: "100%" }}
       />
       <h5 className="mt-2">Kashi Vishwanath</h5>
     </div>
 
     <div className="col-md-4 mb-4">
       <img
-        src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Golden_Temple_night.jpg"
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Golden_Temple_night.jpg/640px-Golden_Temple_night.jpg"
         className="img-fluid rounded shadow"
         alt="Golden Temple"
-        style={{height:"250px", objectFit:"cover", width:"100%"}}
+        style={{ height: "250px", objectFit: "cover", width: "100%" }}
       />
       <h5 className="mt-2">Golden Temple</h5>
     </div>
 
   </div>
-
 </div>
 
       {/* WHY CHOOSE US */}
