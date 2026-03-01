@@ -15,7 +15,7 @@ Relationship:
 One User → Many Bookings
 One User → Many Donations
 
----
+-----------------------------
 
 ## 2. Temple Collection
 
