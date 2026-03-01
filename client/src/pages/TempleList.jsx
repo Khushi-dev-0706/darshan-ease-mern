@@ -1,0 +1,75 @@
+import TempleCard from "../components/TempleCard";
+
+function TempleList() {
+
+const temples = [
+{
+id: 1,
+name: "Tirupati Balaji",
+location: "Andhra Pradesh",
+image: "https://images.unsplash.com/photo-1583241800698-7a3a1d4e3b43"
+},
+{
+id: 2,
+name: "Kashi Vishwanath",
+location: "Varanasi",
+image: "https://images.unsplash.com/photo-1627894483216-2138af692e32"
+},
+{
+id: 3,
+name: "Vaishno Devi",
+location: "Jammu & Kashmir",
+image: "https://images.unsplash.com/photo-1605640840605-14ac1855827b"
+},
+{
+id: 4,
+name: "Somnath Temple",
+location: "Gujarat",
+image: "https://images.unsplash.com/photo-1599661046289-e31897846e41"
+},
+{
+id: 5,
+name: "Golden Temple",
+location: "Amritsar",
+image: "https://images.unsplash.com/photo-1595815771614-ade501d1f9eb"
+},
+{
+id: 6,
+name: "Jagannath Temple",
+location: "Puri",
+image: "https://images.unsplash.com/photo-1566554273541-37a9ca77b91c"
+}
+];
+
+return (
+<div>
+
+{/* Page Header */}
+<div className="bg-light p-5 text-center">
+
+<h1>Explore Sacred Temples</h1>
+
+<p className="text-muted">
+Book your darshan slots at India's most sacred temples
+</p>
+
+</div>
+
+{/* Temple Grid */}
+<div className="container mt-5">
+
+<div className="row">
+
+{temples.map((temple) => (
+<TempleCard key={temple.id} temple={temple} />
+))}
+
+</div>
+
+</div>
+
+</div>
+);
+}
+
+export default TempleList;
