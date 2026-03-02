@@ -11,7 +11,7 @@ function Home() {
             "url(https://images.unsplash.com/photo-1605640840605-14ac1855827b)",
           backgroundSize: "cover",
           backgroundPosition: "center",
-          height: "80vh",
+          height: "85vh",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -20,114 +20,129 @@ function Home() {
           position: "relative"
         }}
       >
+        {/* Dark overlay */}
         <div
           style={{
-            backgroundColor: "rgba(0,0,0,0.5)",
-            padding: "40px",
-            borderRadius: "10px"
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            background: "rgba(0,0,0,0.5)"
           }}
-        >
-          <h1 className="display-4">Welcome to DarshanEase 🏛</h1>
+        ></div>
 
-          <p className="lead">
+        <div style={{ position: "relative", zIndex: 2 }}>
+          <h1 className="display-3 fw-bold">Welcome to DarshanEase 🛕</h1>
+
+          <p className="lead mt-3">
             Book darshan slots at India's most sacred temples easily
           </p>
 
           <Link to="/temples">
-            <button className="btn btn-warning btn-lg mt-3">
+            <button className="btn btn-warning btn-lg mt-4 px-4">
               Explore Temples
             </button>
           </Link>
         </div>
       </div>
 
-      {/* FEATURED TEMPLES */}
-     <div className="container mt-5">
-  <h2 className="text-center mb-4">Popular Temples</h2>
 
-  <div className="row text-center">
+      {/* FEATURE SECTION */}
+      <div className="container mt-5 text-center">
 
-    <div className="col-md-4 mb-4">
-      <img
-        src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Tirumala_Temple.jpg/640px-Tirumala_Temple.jpg"
-        className="img-fluid rounded shadow"
-        alt="Tirupati Temple"
-        style={{ height: "250px", objectFit: "cover", width: "100%" }}
-      />
-      <h5 className="mt-2">Tirupati Balaji</h5>
-    </div>
-
-    <div className="col-md-4 mb-4">
-      <img
-        src="https://share.google/CxneRGoKqCJtrpbeG"
-        className="img-fluid rounded shadow"
-        alt="Kashi Vishwanath"
-        style={{ height: "250px", objectFit: "cover", width: "100%" }}
-      />
-      <h5 className="mt-2">Kashi Vishwanath</h5>
-    </div>
-
-    <div className="col-md-4 mb-4">
-      <img
-        src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Golden_Temple_night.jpg/640px-Golden_Temple_night.jpg"
-        className="img-fluid rounded shadow"
-        alt="Golden Temple"
-        style={{ height: "250px", objectFit: "cover", width: "100%" }}
-      />
-      <h5 className="mt-2">Golden Temple</h5>
-    </div>
-
-  </div>
-</div>
-
-      {/* WHY CHOOSE US */}
-      <div className="container mt-5">
-
-        <h2 className="text-center mb-4">
-          Why Choose DarshanEase
-        </h2>
-
-        <div className="row text-center">
+        <div className="row">
 
           <div className="col-md-4">
             <h4>⚡ Fast Booking</h4>
-            <p>Reserve your darshan slot in seconds.</p>
+            <p className="text-muted">
+              Reserve your darshan slot instantly without long waiting lines.
+            </p>
           </div>
 
           <div className="col-md-4">
-            <h4>📅 Slot Management</h4>
-            <p>Choose convenient darshan timings.</p>
+            <h4>📅 Flexible Slots</h4>
+            <p className="text-muted">
+              Choose convenient timings that suit your schedule.
+            </p>
           </div>
 
           <div className="col-md-4">
-            <h4>🙏 Secure Donations</h4>
-            <p>Support temples directly from the platform.</p>
+            <h4>🔒 Secure Platform</h4>
+            <p className="text-muted">
+              Your bookings and data are completely safe and protected.
+            </p>
           </div>
 
         </div>
 
       </div>
 
+
+      {/* POPULAR TEMPLES */}
+      <div className="container mt-5">
+
+        <h2 className="text-center mb-4 fw-bold">
+          Popular Temples
+        </h2>
+
+        <div className="row">
+
+  <div className="col-md-4 mb-4">
+    <img
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Tirumala_Temple.jpg/640px-Tirumala_Temple.jpg"
+      className="img-fluid rounded shadow"
+      alt="Tirupati Temple"
+      style={{ height: "260px", objectFit: "cover", width: "100%" }}
+    />
+    <h5 className="mt-3 text-center">Tirupati Balaji</h5>
+  </div>
+
+  <div className="col-md-4 mb-4">
+    <img
+      src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Kashi_Vishwanath_Temple.jpg"
+      className="img-fluid rounded shadow"
+      alt="Kashi Vishwanath"
+      style={{ height: "260px", objectFit: "cover", width: "100%" }}
+    />
+    <h5 className="mt-3 text-center">Kashi Vishwanath</h5>
+  </div>
+
+  <div className="col-md-4 mb-4">
+    <img
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Golden_Temple_night.jpg/640px-Golden_Temple_night.jpg"
+      className="img-fluid rounded shadow"
+      alt="Golden Temple"
+      style={{ height: "260px", objectFit: "cover", width: "100%" }}
+    />
+    <h5 className="mt-3 text-center">Golden Temple</h5>
+  </div>
+
+</div>
+
+      </div>
+
+
       {/* STATS SECTION */}
-      <div className="bg-light mt-5 p-5">
+      <div className="bg-light mt-5 py-5">
 
         <div className="container text-center">
 
           <div className="row">
 
             <div className="col-md-4">
-              <h2>50+</h2>
-              <p>Temples Listed</p>
+              <h2 className="fw-bold">50+</h2>
+              <p className="text-muted">Temples Listed</p>
             </div>
 
             <div className="col-md-4">
-              <h2>10K+</h2>
-              <p>Bookings Completed</p>
+              <h2 className="fw-bold">10K+</h2>
+              <p className="text-muted">Bookings Completed</p>
             </div>
 
             <div className="col-md-4">
-              <h2>25K+</h2>
-              <p>Devotees Served</p>
+              <h2 className="fw-bold">25K+</h2>
+              <p className="text-muted">Devotees Served</p>
             </div>
 
           </div>
@@ -136,17 +151,20 @@ function Home() {
 
       </div>
 
+
       {/* CALL TO ACTION */}
-      <div className="container text-center mt-5">
+      <div className="container text-center mt-5 mb-5">
 
-        <h2>Start Your Spiritual Journey Today</h2>
+        <h2 className="fw-bold">
+          Start Your Spiritual Journey Today
+        </h2>
 
-        <p className="text-muted">
+        <p className="text-muted mt-3">
           Discover sacred temples and book your darshan slot easily.
         </p>
 
         <Link to="/temples">
-          <button className="btn btn-primary btn-lg">
+          <button className="btn btn-primary btn-lg mt-3">
             View Temples
           </button>
         </Link>
