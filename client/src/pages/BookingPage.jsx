@@ -117,23 +117,22 @@ function BookingPage() {
          */}
         {/* TIME SLOT */}
 
+
 <select
   className="form-control mb-3"
-  value={slot}
-  onChange={(e)=>setSlot(e.target.value)}
+  name="slot"
+  value={bookingData.slot}
+  onChange={handleChange}
   required
 >
-
-<option value="">Select Time Slot</option>
-
-<option value="6:00 AM - 8:00 AM">6:00 AM - 8:00 AM</option>
-<option value="8:00 AM - 10:00 AM">8:00 AM - 10:00 AM</option>
-<option value="10:00 AM - 12:00 PM">10:00 AM - 12:00 PM</option>
-<option value="12:00 PM - 2:00 PM">12:00 PM - 2:00 PM</option>
-<option value="2:00 PM - 4:00 PM">2:00 PM - 4:00 PM</option>
-<option value="4:00 PM - 6:00 PM">4:00 PM - 6:00 PM</option>
-<option value="6:00 PM - 8:00 PM">6:00 PM - 8:00 PM</option>
-
+  <option value="">Select Time Slot</option>
+  <option value="6:00 AM - 8:00 AM">6:00 AM - 8:00 AM</option>
+  <option value="8:00 AM - 10:00 AM">8:00 AM - 10:00 AM</option>
+  <option value="10:00 AM - 12:00 PM">10:00 AM - 12:00 PM</option>
+  <option value="12:00 PM - 2:00 PM">12:00 PM - 2:00 PM</option>
+  <option value="2:00 PM - 4:00 PM">2:00 PM - 4:00 PM</option>
+  <option value="4:00 PM - 6:00 PM">4:00 PM - 6:00 PM</option>
+  <option value="6:00 PM - 8:00 PM">6:00 PM - 8:00 PM</option>
 </select>
 
         <button

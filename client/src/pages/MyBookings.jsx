@@ -3,7 +3,6 @@ import API from "../services/api";
 
 function MyBookings() {
   const [bookings, setBookings] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [donations, setDonations] = useState([]);
 
   useEffect(() => {
@@ -25,7 +24,7 @@ function MyBookings() {
       } catch (error) {
         console.log(error);
       } finally {
-        setLoading(false);
+        // loading state removed
       }
     };
     
