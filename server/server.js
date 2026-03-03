@@ -31,10 +31,12 @@ mongoose
 const authRoutes = require("./routes/authRoutes");
 const templeRoutes = require("./routes/templeRoutes");
 const bookingRoutes = require("./routes/bookingRoutes");
+const donationRoutes = require("./routes/donationRoutes");
 
 app.use("/api/auth", authRoutes);
 app.use("/api/temples", templeRoutes);
 app.use("/api/bookings", bookingRoutes);
+app.use("/api/donations", donationRoutes);
 
 /* ================= TEST ROUTE ================= */
 

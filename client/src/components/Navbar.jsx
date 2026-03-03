@@ -43,8 +43,8 @@ function Navbar() {
            Donate
           </Link>
 
-          <Link className="btn btn-outline-light me-2" to="/my-bookings">
-           My Bookings
+          <Link className="btn btn-outline-light me-2" to="/account">
+          Account
           </Link>
           <button className="btn btn-danger ms-2" onClick={handleLogout}>
             Logout

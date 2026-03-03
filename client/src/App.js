@@ -33,7 +33,7 @@ function App() {
 />
 
 <Route
-  path="/my-bookings"
+  path="/account"
   element={
     <ProtectedRoute>
       <MyBookings />
