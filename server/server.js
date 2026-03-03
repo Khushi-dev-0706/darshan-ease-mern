@@ -11,7 +11,6 @@ app.use(cors());
 app.use(express.json());
 app.use("/images", express.static("images"));
 
-
 /* ================= DATABASE ================= */
 
 const MONGO_URI =
@@ -32,11 +31,19 @@ const authRoutes = require("./routes/authRoutes");
 const templeRoutes = require("./routes/templeRoutes");
 const bookingRoutes = require("./routes/bookingRoutes");
 const donationRoutes = require("./routes/donationRoutes");
+const adminRoutes = require("./routes/adminRoutes");
+
+/* NEW DASHBOARD ROUTE */
+const dashboardRoutes = require("./routes/dashboardRoutes");
 
 app.use("/api/auth", authRoutes);
 app.use("/api/temples", templeRoutes);
 app.use("/api/bookings", bookingRoutes);
 app.use("/api/donations", donationRoutes);
+app.use("/api/admin", adminRoutes);
+
+/* REGISTER DASHBOARD API */
+app.use("/api/dashboard", dashboardRoutes);
 
 /* ================= TEST ROUTE ================= */
 

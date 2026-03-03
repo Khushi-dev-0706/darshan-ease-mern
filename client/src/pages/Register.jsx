@@ -7,8 +7,10 @@ function Register() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    password: ""
+    password: "",
+    role: "user"
   });
+
 
   const handleChange = (e) => {
     setFormData({
@@ -39,7 +41,6 @@ function Register() {
       <h2>Register</h2>
 
       <form onSubmit={handleSubmit}>
-
         <input
           type="text"
           name="name"
@@ -47,7 +48,6 @@ function Register() {
           className="form-control mb-2"
           onChange={handleChange}
         />
-
         <input
           type="email"
           name="email"
@@ -55,7 +55,6 @@ function Register() {
           className="form-control mb-2"
           onChange={handleChange}
         />
-
         <input
           type="password"
           name="password"
@@ -63,11 +62,18 @@ function Register() {
           className="form-control mb-2"
           onChange={handleChange}
         />
-
+        <select
+          name="role"
+          className="form-control mb-2"
+          value={formData.role}
+          onChange={handleChange}
+        >
+          <option value="user">Normal User</option>
+          <option value="admin">Admin</option>
+        </select>
         <button className="btn btn-primary">
           Register
         </button>
-
       </form>
     </div>
   );

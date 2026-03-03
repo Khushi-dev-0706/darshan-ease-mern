@@ -9,6 +9,7 @@ import BookingPage from "./pages/BookingPage";
 import MyBookings from "./pages/MyBookings";
 import DonationPage from "./pages/DonationPage";
 import ProtectedRoute from "./components/ProtectedRoute";
+import AdminDashboard from "./pages/AdminDashboard";
 import TicketPage from "./pages/TicketPage";
 
 function App() {
@@ -50,6 +51,14 @@ function App() {
         }
         />
         <Route path="/ticket/:id" element={<TicketPage />} />
+        <Route
+          path="/admin"
+          element={
+            <ProtectedRoute adminOnly={true}>
+              <AdminDashboard />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
       
     </BrowserRouter>

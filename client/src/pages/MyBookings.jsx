@@ -5,7 +5,6 @@ import { QRCodeCanvas } from "qrcode.react";
 function MyBookings() {
   const [bookings, setBookings] = useState([]);
   const [donations, setDonations] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,13 +32,7 @@ function MyBookings() {
     fetchData();
   }, []);
 
-  if (loading) {
-    return (
-      <div className="container mt-4">
-        <h4>Loading bookings...</h4>
-      </div>
-    );
-  }
+
 
   return (
     <div className="container mt-4">
