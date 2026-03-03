@@ -1,9 +1,14 @@
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Navbar() {
+  const username = localStorage.getItem("username");
+  const navigate = useNavigate();
   const handleLogout = () => {
   localStorage.removeItem("token");
+  localStorage.removeItem("username");
   alert("Logged out successfully");
+  navigate("/");
 };
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -12,8 +17,12 @@ function Navbar() {
         <Link className="navbar-brand" to="/">
           DarshanEase
         </Link>
-
         <div>
+          {username && (
+            <span className="text-warning fw-bold me-3">
+              👤 {username}
+              </span>
+            )}
           <Link className="btn btn-outline-light me-2" to="/">
             Home
           </Link>
@@ -34,8 +43,8 @@ function Navbar() {
            Donate
           </Link>
 
-          <Link className="btn btn-outline-light me-2" to="/my-bookings">
-           My Bookings
+          <Link className="btn btn-outline-light me-2" to="/account">
+          Account
           </Link>
           <button className="btn btn-danger ms-2" onClick={handleLogout}>
             Logout

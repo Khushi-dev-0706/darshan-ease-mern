@@ -1,7 +1,9 @@
 import { useState } from "react";
 import API from "../services/api";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -15,17 +17,22 @@ function Register() {
     });
   };
 
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    
     try {
-      const res = await API.post("/auth/register", formData);
-      alert("User Registered Successfully");
-      console.log(res.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+      await API.post("/auth/register", formData);
+      
+      alert("Registration successful ✅ Please login.");
+      
+      navigate("/login");   // 👈 THIS is the important line
+      
+      } catch (error) {
+        console.log(error);
+        alert("Registration failed ❌");
+      }
+    };
 
   return (
     <div className="container mt-4">

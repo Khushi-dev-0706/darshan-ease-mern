@@ -1,13 +1,14 @@
 const mongoose = require("mongoose");
 
 const bookingSchema = new mongoose.Schema({
-
-temple:String,
-
-date:String,
-
-slot:String
-
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required: true
+  },
+  temple: String,
+  date: String,
+  slot: String
 });
 
 module.exports = mongoose.model("Booking",bookingSchema);

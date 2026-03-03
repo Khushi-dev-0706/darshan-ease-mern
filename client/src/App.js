@@ -8,6 +8,7 @@ import TempleDetails from "./pages/TempleDetails";
 import BookingPage from "./pages/BookingPage";
 import MyBookings from "./pages/MyBookings";
 import DonationPage from "./pages/DonationPage";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
@@ -22,9 +23,31 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/temples" element={<TempleList />} />
         <Route path="/temple/:id" element={<TempleDetails />} />
-        <Route path="/booking" element={<BookingPage />} />
-        <Route path="/my-bookings" element={<MyBookings />} />
-        <Route path="/donate" element={<DonationPage />} />
+        <Route
+  path="/booking"
+  element={
+    <ProtectedRoute>
+      <BookingPage />
+    </ProtectedRoute>
+  }
+/>
+
+<Route
+  path="/account"
+  element={
+    <ProtectedRoute>
+      <MyBookings />
+    </ProtectedRoute>
+  }
+/>
+        <Route
+        path="/donate"
+        element={
+        <ProtectedRoute>
+          <DonationPage />
+          </ProtectedRoute>
+        }
+        />
       </Routes>
       
     </BrowserRouter>

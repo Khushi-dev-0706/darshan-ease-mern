@@ -84,12 +84,14 @@ exports.loginUser = async (req, res) => {
     );
 
     res.json({
-
       message: "Login Successful",
-
-      token
-
-    });
+      token,
+      user: {
+         _id: user._id,
+         name: user.name,
+         email: user.email
+        }
+      });
 
   } catch (error) {
 

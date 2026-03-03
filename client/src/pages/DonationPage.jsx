@@ -1,12 +1,30 @@
 import { useState } from "react";
+import API from "../services/api";
 
 function DonationPage() {
   const [amount, setAmount] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert("🙏 Thank you for your donation of ₹" + amount);
-    setAmount("");
+    
+    try {
+      const token = localStorage.getItem("token");
+      
+      await API.post(
+        "/donations",
+        { amount },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+      );
+      
+      alert("Donation Successful 🙏");
+    
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -50,12 +68,12 @@ function DonationPage() {
               <label className="form-label">Enter Amount (₹)</label>
 
               <input
-                type="number"
-                className="form-control"
-                placeholder="Enter donation amount"
-                value={amount}
-                onChange={(e) => setAmount(e.target.value)}
-                required
+              type="text"
+              inputMode="numeric"
+              pattern="[0-9]*"
+              className="form-control"
+              value={amount}
+              onChange={(e) => setAmount(e.target.value)}
               />
             </div>
 

@@ -20,7 +20,7 @@ message:"All fields required"
 }
 
 const booking = await Booking.create({
-
+user: req.user.id,
 temple,
 date,
 slot
@@ -56,24 +56,15 @@ message:"Booking Failed"
 
 exports.getBookings = async(req,res)=>{
 
-try{
+try {
+    const bookings = await Booking.find({
+      user: req.user.id
+    });
 
-const bookings = await Booking.find();
-
-res.json(bookings);
-
-}
-
-catch(error){
-
-res.status(500).json({
-
-message:"Fetch Failed"
-
-});
-
-}
-
+    res.json(bookings);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching bookings" });
+  }
 };
 
 // const Booking = require("../models/Booking");
