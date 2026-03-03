@@ -9,6 +9,7 @@ import BookingPage from "./pages/BookingPage";
 import MyBookings from "./pages/MyBookings";
 import DonationPage from "./pages/DonationPage";
 import ProtectedRoute from "./components/ProtectedRoute";
+import TicketPage from "./pages/TicketPage";
 
 function App() {
   return (
@@ -48,6 +49,7 @@ function App() {
           </ProtectedRoute>
         }
         />
+        <Route path="/ticket/:id" element={<TicketPage />} />
       </Routes>
       
     </BrowserRouter>
