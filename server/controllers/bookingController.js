@@ -67,6 +67,21 @@ try {
   }
 };
 
+exports.getBookingById = async (req, res) => {
+  try {
+    const booking = await Booking.findById(req.params.id)
+      .populate("user", "name email");
+
+    if (!booking) {
+      return res.status(404).json({ message: "Ticket not found" });
+    }
+
+    res.json(booking);
+  } catch (error) {
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
 // const Booking = require("../models/Booking");
 
 

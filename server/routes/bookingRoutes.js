@@ -3,11 +3,13 @@ const router = express.Router();
 const protect = require("../middleware/authMiddleware");
 const {
   createBooking,
-  getBookings
+  getBookings,
+  getBookingById
 } = require("../controllers/bookingController");
 
 router.post("/", protect, createBooking);
 router.get("/", protect, getBookings);
+router.get("/:id", getBookingById);
 
 module.exports = router;
 
