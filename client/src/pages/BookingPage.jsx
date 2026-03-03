@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import API from "../services/api";
+import { useNavigate } from "react-router-dom";
 
 function BookingPage() {
+
+  const navigate = useNavigate();
 
   // receive temple name from TempleCard
   const location = useLocation();
@@ -53,6 +56,7 @@ function BookingPage() {
       );
 
       alert("Booking Successful 🙏");
+      navigate("/temples");
 
       console.log(res.data);
 

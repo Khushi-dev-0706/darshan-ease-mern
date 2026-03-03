@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import API from "../services/api";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     email: "",
@@ -24,6 +26,10 @@ function Login() {
       const res = await API.post("/auth/login", formData);
 
       localStorage.setItem("token", res.data.token);
+
+      localStorage.setItem("username", res.data.user.name);
+
+      navigate("/");
 
       alert("Login Successful ");
 

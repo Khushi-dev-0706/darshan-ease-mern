@@ -12,7 +12,12 @@ function MyBookings() {
 
       try {
 
-        const res = await API.get("/bookings");
+        const token = localStorage.getItem("token");
+        const res = await API.get("/bookings", {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
 
         setBookings(res.data);
 
