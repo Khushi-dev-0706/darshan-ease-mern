@@ -1,5 +1,6 @@
 const Booking = require("../models/Booking");
 const Donation = require("../models/Donation");
+const Temple = require("../models/Temple");
 
 exports.getDashboard = async (req, res) => {
   try {
@@ -30,5 +31,24 @@ exports.getDashboard = async (req, res) => {
 
   } catch (error) {
     res.status(500).json({ message: "Dashboard error" });
+  }
+};
+
+exports.getAdminStats = async (req, res) => {
+  try {
+
+    const temples = await Temple.countDocuments();
+    const bookings = await Booking.countDocuments();
+    const donations = await Donation.countDocuments();
+
+    res.json({
+      temples,
+      bookings,
+      donations
+    });
+
+  } catch (error) {
+    console.error("Admin Stats Error:", error);
+    res.status(500).json({ message: "Error fetching admin stats" });
   }
 };

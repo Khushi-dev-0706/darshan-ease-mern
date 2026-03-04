@@ -1,8 +1,14 @@
 import { Link } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import tirupatiImg from '../assets/tirupati.jpg';
 import kashiImg from '../assets/kashi.jpg';
 import goldenTempleImg from '../assets/goldentemple.jpg';
 function Home() {
+const role = localStorage.getItem("role");
+
+  if (role === "admin") {
+    return <Navigate to="/admin/dashboard" />;
+  }
   return (
     <div style={{ background: '#f8f9fa' }}>
       {/* HERO SECTION */}
@@ -23,7 +29,7 @@ function Home() {
       >
         <div style={{ position: "relative", zIndex: 2 }}>
           <h1 className="display-2 fw-bold mb-3" style={{ letterSpacing: '1px' }}>
-            Welcome to <span style={{ color: '#F59E42' }}>DarshanEase</span> 🛕
+            Welcome to <span style={{ color: '#F59E42' }}>DarshanEase {role === "admin" && "(Organizer)"}</span> 🛕
           </h1>
           <p className="lead mb-4" style={{ fontSize: '1.35rem', color: '#fff' }}>
             Book darshan slots at India's most sacred temples easily

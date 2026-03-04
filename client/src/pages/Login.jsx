@@ -29,7 +29,11 @@ function Login() {
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("username", res.data.user.name);
       localStorage.setItem("role", res.data.user.role);
-      navigate("/");
+      if (res.data.user.role === "admin") {
+        navigate("/admin/dashboard");
+      } else {
+        navigate("/");
+      }
       alert("Login Successful ");
 
     } catch (error) {

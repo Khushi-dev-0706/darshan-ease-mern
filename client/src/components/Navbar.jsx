@@ -5,6 +5,7 @@ import { useState, useRef, useEffect } from "react";
 
 
 function Navbar() {
+  const role = localStorage.getItem("role");
   const username = localStorage.getItem("username");
   const navigate = useNavigate();
   const [showDropdown, setShowDropdown] = useState(false);
@@ -33,7 +34,7 @@ function Navbar() {
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container">
         <Link className="navbar-brand" to="/">
-          DarshanEase
+          DarshanEase{role === "admin" && "(Organizer)"}
         </Link>
         <div className="d-flex align-items-center ms-auto">
           <Link className="btn btn-outline-light me-2" to="/">
