@@ -1,42 +1,34 @@
 import { Link, useNavigate } from "react-router-dom";
 
+
 function AdminNavbar() {
 
   const navigate = useNavigate();
   const username = localStorage.getItem("username");
 
   const handleLogout = () => {
-
     localStorage.removeItem("token");
     localStorage.removeItem("username");
     localStorage.removeItem("role");
-
     navigate("/login");
   };
 
   return (
-
     <nav className="navbar navbar-dark bg-dark px-4">
 
-<<<<<<< HEAD
-      <span className="navbar-brand">DarshanEase(Organizer)</span>
-=======
-      <span className="navbar-brand fw-bold">
-        DarshanEase Admin
-      </span>
->>>>>>> e9b5be0 (saving local changes)
+      <span className="navbar-brand">DarshanEase Admin</span>
 
-      <div className="d-flex align-items-center">
+      <div>
 
         <Link className="btn btn-outline-light me-2" to="/admin/dashboard">
           Dashboard
         </Link>
 
-        <Link className="btn btn-outline-light me-2" to="/admin/temples">
+        <Link className="btn btn-outline-light me-2" to="/admin/my-temple">
           My Temples
         </Link>
 
-        <Link className="btn btn-outline-light me-2" to="/admin/donations">
+        <Link className="btn btn-outline-light me-2" to="/admin/darshans">
           Donations
         </Link>
 
@@ -44,9 +36,8 @@ function AdminNavbar() {
           Bookings
         </Link>
 
-        {/* User Dropdown */}
-
-        <div className="dropdown">
+        {/* Username Dropdown */}
+        <div className="dropdown d-inline">
 
           <button
             className="btn btn-outline-warning dropdown-toggle"
@@ -58,15 +49,9 @@ function AdminNavbar() {
           <ul className="dropdown-menu dropdown-menu-end">
 
             <li>
-
-              <button
-                className="dropdown-item"
-                onClick={handleLogout}
-              >
+              <button className="dropdown-item" onClick={handleLogout}>
                 Logout
-
               </button>
-
             </li>
 
           </ul>
@@ -76,7 +61,6 @@ function AdminNavbar() {
       </div>
 
     </nav>
-
   );
 }
 
