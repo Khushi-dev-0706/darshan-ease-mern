@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import React from "react";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -18,25 +19,32 @@ import AdminRoute from "./components/AdminRoute";
 import AdminNavbar from "./components/AdminNavbar";
 
 function App() {
-  const role = localStorage.getItem("role");
+  //const [role] = useState(localStorage.getItem("role"));
   return (
     <BrowserRouter>
       {/* Navbar will appear on all pages */}
-      {role === "admin" ? <AdminNavbar /> : <Navbar />}
+      {window.location.pathname.startsWith("/admin") ? <AdminNavbar /> : <Navbar />}
 
       {/* Routes for different pages */}
       <Routes>
         <Route
-        path="/"
-        element={
-          role === "admin"
-          ? <Navigate to="/admin/dashboard" />
-          : <Home />
-          }
-          />
+  path="/"
+  element={
+    localStorage.getItem("role") === "admin"
+      ? <Navigate to="/admin/dashboard" />
+      : <Home />
+  }
+/>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/temples" element={<TempleList />} />
+        <Route
+  path="/temples"
+  element={
+    localStorage.getItem("role") === "admin"
+      ? <Navigate to="/admin/my-temple" />
+      : <TempleList />
+  }
+/>
         <Route path="/temple/:id" element={<TempleDetails />} />
         <Route path="/ticket/:id" element={<TicketPage />} />
         <Route
@@ -85,21 +93,25 @@ function App() {
 />
 
 <Route
-  path="/account"
-  element={
-    <ProtectedRoute>
-      <MyBookings />
-    </ProtectedRoute>
-  }
+ path="/account"
+ element={
+   localStorage.getItem("role") === "admin"
+     ? <Navigate to="/admin/bookings" />
+     : (
+       <ProtectedRoute>
+         <MyBookings />
+       </ProtectedRoute>
+     )
+ }
 />
         <Route
-        path="/donate"
-        element={
-        <ProtectedRoute>
-          <DonationPage />
-          </ProtectedRoute>
-        }
-        />
+  path="/donate"
+  element={
+    localStorage.getItem("role") === "admin"
+      ? <Navigate to="/admin/donations" />
+      : <DonationPage />
+  }
+/>
       </Routes>
       
     </BrowserRouter>

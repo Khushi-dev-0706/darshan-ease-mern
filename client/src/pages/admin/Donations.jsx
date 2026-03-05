@@ -17,10 +17,14 @@ function Donations() {
       .catch(err => console.error("Error fetching donations:", err));
   }, []);
 
+  const totalDonations = donations.reduce((sum, donation) => sum + donation.amount, 0);
+
   return (
     <div className="container mt-4">
 
       <h2>Donations</h2>
+      
+<h4>Total Donations: ₹{totalDonations}</h4>
 
       {donations.length === 0 ? (
         <p>No donations found.</p>
@@ -28,8 +32,7 @@ function Donations() {
         <table className="table table-bordered mt-3">
           <thead>
             <tr>
-              <th>User</th>
-              <th>Temple</th>
+              <th>User ID</th>
               <th>Amount</th>
               <th>Date</th>
             </tr>
@@ -38,10 +41,9 @@ function Donations() {
           <tbody>
             {donations.map((donation) => (
               <tr key={donation._id}>
-                <td>{donation.user?.name}</td>
-                <td>{donation.temple?.name}</td>
+                <td>{donation.user.name}</td>
                 <td>₹{donation.amount}</td>
-                <td>{new Date(donation.createdAt).toLocaleDateString()}</td>
+                <td>{new Date(donation.date).toLocaleDateString()}</td>
               </tr>
             ))}
           </tbody>

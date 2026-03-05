@@ -14,9 +14,10 @@ function Navbar() {
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("username");
+    localStorage.removeItem("role");
     setShowDropdown(false);
     alert("Logged out successfully");
-    navigate("/");
+    navigate("/login");
   };
 
   // Close dropdown on outside click
@@ -34,7 +35,7 @@ function Navbar() {
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container">
         <Link className="navbar-brand" to="/">
-          DarshanEase{role === "admin" && "(Organizer)"}
+          DarshanEase {role === "admin" && "(Organizer)"}
         </Link>
         <div className="d-flex align-items-center ms-auto">
           <Link className="btn btn-outline-light me-2" to="/">

@@ -17,9 +17,7 @@ exports.createDonation = async (req, res) => {
 
 exports.getDonations = async (req, res) => {
   try {
-    const donations = await Donation.find({
-      user: req.user.id
-    });
+    const donations = await Donation.find().populate("user", "name");
 
     res.json(donations);
   } catch (error) {

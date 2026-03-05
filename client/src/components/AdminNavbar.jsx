@@ -15,7 +15,7 @@ function AdminNavbar() {
   return (
     <nav className="navbar navbar-dark bg-dark px-4">
 
-      <span className="navbar-brand">DarshanEase Admin</span>
+      <span className="navbar-brand">DarshanEase(Organizer)</span>
 
       <div>
 
@@ -27,7 +27,7 @@ function AdminNavbar() {
           My Temples
         </Link>
 
-        <Link className="btn btn-outline-light me-2" to="/admin/darshans">
+        <Link className="btn btn-outline-light me-2" to="/admin/donations">
           Donations
         </Link>
 

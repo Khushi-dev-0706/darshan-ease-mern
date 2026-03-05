@@ -57,9 +57,9 @@ message:"Booking Failed"
 exports.getBookings = async(req,res)=>{
 
 try {
-    const bookings = await Booking.find({
-      user: req.user.id
-    });
+    const bookings = await Booking.find()
+  .populate("user", "name")
+  .populate("temple", "name");
 
     res.json(bookings);
   } catch (error) {
