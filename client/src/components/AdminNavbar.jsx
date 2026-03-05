@@ -16,7 +16,9 @@ function AdminNavbar() {
   return (
     <nav className="navbar navbar-dark bg-dark px-4">
 
-      <span className="navbar-brand">DarshanEase Admin</span>
+      <span className="navbar-brand fw-bold">
+        DarshanEase(Organizer)
+      </span>
 
       <div>
 
