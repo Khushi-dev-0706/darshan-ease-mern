@@ -18,13 +18,9 @@ function AdminNavbar() {
 
     <nav className="navbar navbar-dark bg-dark px-4">
 
-<<<<<<< HEAD
-      <span className="navbar-brand">DarshanEase(Organizer)</span>
-=======
       <span className="navbar-brand fw-bold">
-        DarshanEase Admin
+        DarshanEase(Organizer)
       </span>
->>>>>>> e9b5be0 (saving local changes)
 
       <div className="d-flex align-items-center">
 
@@ -32,7 +28,7 @@ function AdminNavbar() {
           Dashboard
         </Link>
 
-        <Link className="btn btn-outline-light me-2" to="/admin/temples">
+        <Link className="btn btn-outline-light me-2" to="/admin/my-temple">
           My Temples
         </Link>
 

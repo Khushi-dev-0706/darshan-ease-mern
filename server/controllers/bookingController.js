@@ -57,7 +57,17 @@ message:"Booking Failed"
 exports.getBookings = async(req,res)=>{
 
 try {
-    const bookings = await Booking.find()
+    let bookings;
+
+if (req.user.role === "admin") {
+  bookings = await Booking.find()
+    .populate("user", "name")
+    .populate("temple", "name");
+} else {
+  bookings = await Booking.find({ user: req.user.id })
+    .populate("user", "name")
+    .populate("temple", "name");
+}
   .populate("user", "name")
   .populate("temple", "name");
 

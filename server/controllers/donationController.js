@@ -17,7 +17,14 @@ exports.createDonation = async (req, res) => {
 
 exports.getDonations = async (req, res) => {
   try {
-    const donations = await Donation.find().populate("user", "name");
+    
+let donations;
+
+if (req.user.role === "admin") {
+  donations = await Donation.find();
+} else {
+  donations = await Donation.find({ user: req.user.id });
+}
 
     res.json(donations);
   } catch (error) {

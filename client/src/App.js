@@ -1,9 +1,6 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-<<<<<<< HEAD
 import React from "react";
-=======
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
->>>>>>> e9b5be0 (saving local changes)
 import Navbar from "./components/Navbar";
 import AdminNavbar from "./components/AdminNavbar";
 
@@ -26,71 +23,30 @@ import Donations from "./pages/admin/Donations";
 import Bookings from "./pages/admin/Bookings";
 
 function App() {
-<<<<<<< HEAD
-  //const [role] = useState(localStorage.getItem("role"));
-=======
-
   const role = localStorage.getItem("role");
 
->>>>>>> e9b5be0 (saving local changes)
   return (
-
     <BrowserRouter>
-<<<<<<< HEAD
-      {/* Navbar will appear on all pages */}
-      {window.location.pathname.startsWith("/admin") ? <AdminNavbar /> : <Navbar />}
-=======
-
-      {/* Dynamic Navbar */}
 
       {role === "admin" ? <AdminNavbar /> : <Navbar />}
->>>>>>> e9b5be0 (saving local changes)
 
       <Routes>
 
-        {/* Home Redirect */}
-
         <Route
-<<<<<<< HEAD
   path="/"
   element={
-    localStorage.getItem("role") === "admin"
+    role === "admin"
       ? <Navigate to="/admin/dashboard" />
       : <Home />
   }
 />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route
-  path="/temples"
-  element={
-    localStorage.getItem("role") === "admin"
-      ? <Navigate to="/admin/my-temple" />
-      : <TempleList />
-  }
-/>
-=======
-          path="/"
-          element={
-            role === "admin"
-              ? <Navigate to="/admin/dashboard" />
-              : <Home />
-          }
-        />
-
-        {/* Auth */}
 
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-
-        {/* Public Pages */}
 
         <Route path="/temples" element={<TempleList />} />
->>>>>>> e9b5be0 (saving local changes)
         <Route path="/temple/:id" element={<TempleDetails />} />
         <Route path="/ticket/:id" element={<TicketPage />} />
-
-        {/* User Protected */}
 
         <Route
           path="/booking"
@@ -102,54 +58,26 @@ function App() {
         />
 
         <Route
-<<<<<<< HEAD
-  path="/booking"
-  element={
-    <ProtectedRoute>
-      <BookingPage />
-    </ProtectedRoute>
-  }
-/>
-
-<Route
- path="/account"
- element={
-   localStorage.getItem("role") === "admin"
-     ? <Navigate to="/admin/bookings" />
-     : (
-       <ProtectedRoute>
-         <MyBookings />
-       </ProtectedRoute>
-     )
- }
-/>
-        <Route
-  path="/donate"
-  element={
-    localStorage.getItem("role") === "admin"
-      ? <Navigate to="/admin/donations" />
-      : <DonationPage />
-  }
-/>
-=======
           path="/account"
           element={
-            <ProtectedRoute>
-              <MyBookings />
-            </ProtectedRoute>
+            role === "admin"
+              ? <Navigate to="/admin/bookings" />
+              : (
+                <ProtectedRoute>
+                  <MyBookings />
+                </ProtectedRoute>
+              )
           }
         />
 
         <Route
           path="/donate"
           element={
-            <ProtectedRoute>
-              <DonationPage />
-            </ProtectedRoute>
+            role === "admin"
+              ? <Navigate to="/admin/donations" />
+              : <DonationPage />
           }
         />
-
-        {/* Admin Routes */}
 
         <Route
           path="/admin/dashboard"
@@ -161,7 +89,7 @@ function App() {
         />
 
         <Route
-          path="/admin/temples"
+          path="/admin/my-temple"
           element={
             <AdminRoute>
               <MyTemple />
@@ -187,11 +115,9 @@ function App() {
           }
         />
 
->>>>>>> e9b5be0 (saving local changes)
       </Routes>
 
     </BrowserRouter>
-
   );
 }
 
