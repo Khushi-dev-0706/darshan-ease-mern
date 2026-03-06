@@ -32,7 +32,7 @@ function Donations() {
         <table className="table table-bordered mt-3">
           <thead>
             <tr>
-              <th>User ID</th>
+              <th>User</th>
               <th>Amount</th>
               <th>Date</th>
             </tr>

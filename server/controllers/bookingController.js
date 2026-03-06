@@ -68,8 +68,6 @@ if (req.user.role === "admin") {
     .populate("user", "name")
     .populate("temple", "name");
 }
-  .populate("user", "name")
-  .populate("temple", "name");
 
     res.json(bookings);
   } catch (error) {

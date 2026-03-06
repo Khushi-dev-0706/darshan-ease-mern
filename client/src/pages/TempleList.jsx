@@ -68,17 +68,17 @@ function TempleList() {
           <h4 className="text-center">No temples available</h4>
         ) : (
 
-         <div className="row g-4">
+          <div className="row g-4">
 
-  {temples.map((temple) => (
+            {temples.map((temple) => (
 
-    <div className="col-lg-4 col-md-6" key={temple.id}>
-      <TempleCard temple={temple} />
-    </div>
+              <div className="col-lg-4 col-md-6" key={temple._id}>
+                <TempleCard temple={temple} />
+              </div>
 
-  ))}
+            ))}
 
-</div>
+          </div>
 
         )}
 

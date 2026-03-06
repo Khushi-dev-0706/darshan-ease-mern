@@ -12,6 +12,18 @@
 const express = require("express");
 const router = express.Router();
 
+const {
+  getTemples,
+  addTemple,
+  updateTemple,
+  deleteTemple
+} = require("../controllers/templeController");
+
+router.get("/temples", getTemples);
+router.post("/temples", addTemple);
+router.put("/temples/:id", updateTemple);
+router.delete("/temples/:id", deleteTemple);
+
 router.get("/", (req, res) => {
 
   res.json([
