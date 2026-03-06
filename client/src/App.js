@@ -23,35 +23,39 @@ import Donations from "./pages/admin/Donations";
 import Bookings from "./pages/admin/Bookings";
 
 function App() {
+
   const role = localStorage.getItem("role");
 
   return (
     <BrowserRouter>
 
+      {/* Dynamic Navbar */}
       {role === "admin" ? <AdminNavbar /> : <Navbar />}
 
       <Routes>
 
+        {/* Home */}
         <Route
-  path="/"
-  element={
-    role === "admin"
-      ? <Navigate to="/admin/dashboard" />
-      : <Home />
-  }
-/>
+          path="/"
+          element={
+            role === "admin"
+              ? <Navigate to="/admin/dashboard" />
+              : <Navigate to="/home" />
+          }
+        />
 
+        <Route path="/home" element={<Home />} />
+
+        {/* Auth */}
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
+        {/* Public Pages */}
         <Route path="/temples" element={<TempleList />} />
         <Route path="/temple/:id" element={<TempleDetails />} />
         <Route path="/ticket/:id" element={<TicketPage />} />
 
-<<<<<<< HEAD
         {/* User Protected */}
-=======
->>>>>>> b4b87a804a0cc01e6a8fcb843d80cf3f41a8884b
         <Route
           path="/booking"
           element={
@@ -83,6 +87,7 @@ function App() {
           }
         />
 
+        {/* Admin Routes */}
         <Route
           path="/admin/dashboard"
           element={
