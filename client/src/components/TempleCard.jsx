@@ -29,7 +29,7 @@ function TempleCard({ temple }) {
         }}
       >
         <img
-          src={`http://localhost:5000${temple.image}`}
+          src={temple.image}//{`http://localhost:5000${temple.image}`}
           alt={temple.name}
           className="temple-img mb-3"
           style={{ width: 320, height: 220, objectFit: "cover", borderRadius: 12 }}
