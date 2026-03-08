@@ -34,7 +34,7 @@ function AdminNavbar() {
           Donations
         </Link>
 
-        <Link className="btn btn-outline-light me-3" to="/admin/bookings">
+        <Link className="btn btn-outline-light me-2" to="/admin/bookings">
           Bookings
         </Link>
 

@@ -55,7 +55,10 @@ function App() {
         <Route path="/temple/:id" element={<TempleDetails />} />
         <Route path="/ticket/:id" element={<TicketPage />} />
 
+<<<<<<< HEAD
+=======
         {/* User Protected */}
+>>>>>>> 06386ff7b538fd16cd281855a4fa49155fc65ac7
         <Route
           path="/booking"
           element={

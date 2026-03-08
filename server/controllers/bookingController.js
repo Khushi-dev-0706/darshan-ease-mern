@@ -54,11 +54,21 @@ message:"Booking Failed"
 
 // GET BOOKINGS
 
-exports.getBookings = async(req,res)=>{
-
-try {
+exports.getBookings = async (req, res) => {
+  try {
     let bookings;
 
+<<<<<<< HEAD
+    if (req.user.role === "admin") {
+      bookings = await Booking.find()
+        .populate("user", "name")
+        .populate("temple", "name");
+    } else {
+      bookings = await Booking.find({ user: req.user.id })
+        .populate("user", "name")
+        .populate("temple", "name");
+    }
+=======
 if (req.user.role === "admin") {
   bookings = await Booking.find()
     .populate("user", "name")
@@ -68,6 +78,7 @@ if (req.user.role === "admin") {
     .populate("user", "name")
     .populate("temple", "name");
 }
+>>>>>>> 06386ff7b538fd16cd281855a4fa49155fc65ac7
 
     res.json(bookings);
   } catch (error) {
