@@ -1,64 +1,44 @@
 const Booking = require("../models/Booking");
 
-
 // CREATE BOOKING
+exports.createBooking = async (req, res) => {
+  try {
 
-exports.createBooking = async (req,res)=>{
+    const { temple, date, slot } = req.body;
 
-try{
+    if (!temple || !date || !slot) {
+      return res.status(400).json({
+        message: "All fields required"
+      });
+    }
 
-const { temple , date , slot } = req.body;
+    const booking = await Booking.create({
+      user: req.user.id,
+      temple,
+      date,
+      slot
+    });
 
-if(!temple || !date || !slot){
+    res.status(201).json({
+      message: "Booking Saved",
+      booking
+    });
 
-return res.status(400).json({
-
-message:"All fields required"
-
-});
-
-}
-
-const booking = await Booking.create({
-user: req.user.id,
-temple,
-date,
-slot
-
-});
-
-res.status(201).json({
-
-message:"Booking Saved",
-
-booking
-
-});
-
-}
-
-catch(error){
-
-console.log(error);
-
-res.status(500).json({
-
-message:"Booking Failed"
-
-});
-
-}
-
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      message: "Booking Failed"
+    });
+  }
 };
 
 
 // GET BOOKINGS
-
 exports.getBookings = async (req, res) => {
   try {
+
     let bookings;
 
-<<<<<<< HEAD
     if (req.user.role === "admin") {
       bookings = await Booking.find()
         .populate("user", "name")
@@ -68,38 +48,143 @@ exports.getBookings = async (req, res) => {
         .populate("user", "name")
         .populate("temple", "name");
     }
-=======
-if (req.user.role === "admin") {
-  bookings = await Booking.find()
-    .populate("user", "name")
-    .populate("temple", "name");
-} else {
-  bookings = await Booking.find({ user: req.user.id })
-    .populate("user", "name")
-    .populate("temple", "name");
-}
->>>>>>> 06386ff7b538fd16cd281855a4fa49155fc65ac7
 
     res.json(bookings);
+
   } catch (error) {
-    res.status(500).json({ message: "Error fetching bookings" });
+    res.status(500).json({
+      message: "Error fetching bookings"
+    });
   }
 };
 
+
+// GET BOOKING BY ID
 exports.getBookingById = async (req, res) => {
   try {
+
     const booking = await Booking.findById(req.params.id)
       .populate("user", "name email");
 
     if (!booking) {
-      return res.status(404).json({ message: "Ticket not found" });
+      return res.status(404).json({
+        message: "Ticket not found"
+      });
     }
 
     res.json(booking);
+
   } catch (error) {
-    res.status(500).json({ message: "Server error" });
+    res.status(500).json({
+      message: "Server error"
+    });
   }
 };
+
+// const Booking = require("../models/Booking");
+
+
+// // CREATE BOOKING
+
+// exports.createBooking = async (req,res)=>{
+
+// try{
+
+// const { temple , date , slot } = req.body;
+
+// if(!temple || !date || !slot){
+
+// return res.status(400).json({
+
+// message:"All fields required"
+
+// });
+
+// }
+
+// const booking = await Booking.create({
+// user: req.user.id,
+// temple,
+// date,
+// slot
+
+// });
+
+// res.status(201).json({
+
+// message:"Booking Saved",
+
+// booking
+
+// });
+
+// }
+
+// catch(error){
+
+// console.log(error);
+
+// res.status(500).json({
+
+// message:"Booking Failed"
+
+// });
+
+// }
+
+// };
+
+
+// // GET BOOKINGS
+
+// exports.getBookings = async (req, res) => {
+//   try {
+//     let bookings;
+
+// <<<<<<< HEAD
+//     if (req.user.role === "admin") {
+//       bookings = await Booking.find()
+//         .populate("user", "name")
+//         .populate("temple", "name");
+//     } else {
+//       bookings = await Booking.find({ user: req.user.id })
+//         .populate("user", "name")
+//         .populate("temple", "name");
+//     }
+// =======
+// if (req.user.role === "admin") {
+//   bookings = await Booking.find()
+//     .populate("user", "name")
+//     .populate("temple", "name");
+// } else {
+//   bookings = await Booking.find({ user: req.user.id })
+//     .populate("user", "name")
+//     .populate("temple", "name");
+// }
+// >>>>>>> 06386ff7b538fd16cd281855a4fa49155fc65ac7
+
+//     res.json(bookings);
+//   } catch (error) {
+//     res.status(500).json({ message: "Error fetching bookings" });
+//   }
+// };
+
+// exports.getBookingById = async (req, res) => {
+//   try {
+//     const booking = await Booking.findById(req.params.id)
+//       .populate("user", "name email");
+
+//     if (!booking) {
+//       return res.status(404).json({ message: "Ticket not found" });
+//     }
+
+//     res.json(booking);
+//   } catch (error) {
+//     res.status(500).json({ message: "Server error" });
+//   }
+// };
+
+
 
 // const Booking = require("../models/Booking");
 

@@ -26,24 +26,29 @@ function MyTemple() {
   };
 
   const addTemple = async () => {
-    try {
-      await API.post("/temples", {
-        name,
-        location,
-        description,
-        image
-      });
+  try {
 
-      setName("");
-      setLocation("");
-      setDescription("");
-      //setImage("");
+    await API.post("/temples", {
+      name: name,
+      location: location,
+      description: description,
+      image: image
+    });
 
-      fetchTemples();
-    } catch (err) {
-      console.error(err);
-    }
-  };
+    // clear form
+    setName("");
+    setLocation("");
+    setDescription("");
+    setImage("");
+
+    // reload temples
+    fetchTemples();
+
+  } catch (err) {
+    console.error(err);
+    alert("Failed to add temple");
+  }
+};
 
   const deleteTemple = async (id) => {
     try {

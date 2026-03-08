@@ -38,7 +38,7 @@ function Bookings() {
       <tbody>
   {bookings.map((booking) => (
     <tr key={booking._id}>
-      <td>{booking.user?.name || booking.user}</td>
+      <td>{booking.user?.name || "Unknown User"}</td>
       <td>{booking.temple}</td>
       <td>{booking.slot}</td>
       <td>{new Date(booking.date).toLocaleDateString()}</td>

@@ -32,9 +32,10 @@ function Login() {
       if (res.data.user.role === "admin") {
         navigate("/admin/dashboard");
       } else {
-        navigate("/");
+        navigate("/home");
       }
       alert("Login Successful ");
+      window.location.reload();
 
     } catch (error) {
 

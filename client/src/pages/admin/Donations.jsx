@@ -41,7 +41,7 @@ function Donations() {
           <tbody>
             {donations.map((donation) => (
               <tr key={donation._id}>
-                <td>{donation.user.name}</td>
+                <td>{donation.user?.name  || "Unknown User"}</td>
                 <td>₹{donation.amount}</td>
                 <td>{new Date(donation.date).toLocaleDateString()}</td>
               </tr>
